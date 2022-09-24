@@ -1,0 +1,15 @@
+---
+ref: <>
+name: <pack name>
+description: <pack description>
+keywords:
+  - list
+  - of
+  - keywords
+version: <pack version>
+python_versions:
+  - "3"
+author: Pablo de la Cuesta Garcia
+email: pablo.delacuesta@outlook.com
+contributors:
+ - Pablo de la Cuesta <pablo.delacuesta@outlook.com>

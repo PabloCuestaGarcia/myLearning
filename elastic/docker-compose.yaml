@@ -5,30 +5,25 @@ services:
   elasticsearch:
     image: elasticsearch:8.4.2
     container_name: elasticsearch
-    environment:
-      ELASTIC_PASSWORD: Ch@ngMe
-      ES_JAVA_OPTS: -Xms512m -Xmx512m
-      discovery.type: single-node
-    volumes:
-      - elastic:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    environment:      
+      ES_JAVA_OPTS: -Xms1g -Xmx1g
+      ELASTIC_PASSWORD: StrongPassw0rd1
     networks:
-      - elastic
+      - elk
 
   kibana:
     image: kibana:8.4.2
     container_name: kibana
-    depends_on:
-      - elasticsearch
     environment:
-      KIBANA_SYSTEM_PASSWORD: Ch@ngeMe
-      ELASTICSEARCH_HOSTS: "[https://elasticsearch:9200]"
+      KIBANA_SYSTEM_PASSWORD: StrongPassw0rd1
+      ELASTICSEARCH_HOSTS: '["https://localhost:9200"]'
     networks:
-      - elastic
+      - elk
     ports:
       - 5601:5601
 
 networks:
-  elastic:
+  elk:
     driver: bridge
-volumes:
-  elastic:

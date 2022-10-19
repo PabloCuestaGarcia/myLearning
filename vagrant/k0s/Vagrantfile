@@ -1,0 +1,40 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+ENV['VAGRANT_NO_PARALLEL'] = 'yes'
+
+MASTER_COUNT = 1
+IMAGE = "bento/ubuntu-22.04"
+MEMORY_MASTER = 4098
+CPUS_MASTER = 4
+
+Vagrant.configure(2) do |config|
+
+  config.vm.provision "shell", path: "bootstrap.sh"
+
+
+  # Kubernetes Master Nodes
+
+  (1..MASTER_COUNT).each do |i|
+
+    config.vm.define "kmaster#{i}" do |masternode|
+
+      masternode.vm.box               = IMAGE
+      masternode.vm.box_check_update  = false
+      masternode.vm.hostname          = "k0s.example.com"
+
+      masternode.vm.network "private_network", ip: "192.168.56.245"
+
+      masternode.vm.provider :virtualbox do |v|
+        v.name   = "k0s"
+        v.memory = MEMORY_MASTER
+        v.cpus   = CPUS_MASTER
+      end
+    
+
+    end
+
+  end
+
+
+end

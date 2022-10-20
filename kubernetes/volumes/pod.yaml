@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp
+spec:
+  volumes:
+    - name: "podVolume"
+      persistentVolumeClaim:
+        claimName: "seaweedfs-storage"
+  containers:
+  - name: myapp
+    image: alpine:3.16
+    command: ["/bin/bash"]
+    args: ["-c", "while true; do date >> file.txt; sleep 5; done;"]
+    volumeMounts:
+      - name: "podVolume"
+        mountPath: /data
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"

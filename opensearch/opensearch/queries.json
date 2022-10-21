@@ -1,0 +1,458 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "config": {"kibana": {"hideWarnings": true}},
+  "description": "A basic bar chart example, with value labels shown upon mouse hover.",
+  "padding": 50,
+  "data": [
+    {
+      "name": "esdata_n6",
+      "url": {
+        "%context%": true,
+        "%timefield%": "current_dt_str",
+        "index": "capacity_dashboard",
+        "body": {
+          "size": 0,
+          "aggs": {
+            "Manager_6": {
+              "terms": {
+                "field": "n6_manager_name.keyword"
+              },
+              "aggs": {
+                "count": {
+                  "value_count": {
+                    "field": "n5_manager_name.keyword"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "format": {
+        "property": "aggregations.Manager_6.buckets"
+      }
+    },
+    {
+      "name": "esdata_n5",
+      "url": {
+        "%context%": true,
+        "%timefield%": "current_dt_str",
+        "index": "capacity_dashboard",
+        "body": {
+          "size": 0,
+          "aggs": {
+            "Manager_5": {
+              "terms": {
+                "field": "n5_manager_name.keyword"
+              },
+              "aggs": {
+                "count": {
+                  "value_count": {
+                    "field": "n4_manager_name.keyword"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "format": {
+        "property": "aggregations.Manager_5.buckets"
+      }
+    },
+    {
+      "name": "esdata_n4",
+      "url": {
+        "%context%": true,
+        "%timefield%": "current_dt_str",
+        "index": "capacity_dashboard",
+        "body": {
+          "size": 0,
+          "aggs": {
+            "Manager_4": {
+              "terms": {"field": "n4_manager_name.keyword"},
+              "aggs": {"count": {"value_count": {"field": "n3_manager_name.keyword"}}}
+            }
+          }
+        }
+      },
+      "format": {"property": "aggregations.Manager_4.buckets"}
+    },
+    {
+      "name": "esdata_n3",
+      "url": {
+        "%context%": true,
+        "%timefield%": "current_dt_str",
+        "index": "capacity_dashboard",
+        "body": {
+          "size": 0,
+          "aggs": {
+            "Manager_3": {
+              "terms": {"field": "n3_manager_name.keyword"},
+              "aggs": {"count": {"value_count": {"field": "n2_manager_name.keyword"}}}
+            }
+          }
+        }
+      },
+      "format": {"property": "aggregations.Manager_3.buckets"}
+    },
+    {
+      "name": "esdata_n2",
+      "url": {
+        "%context%": true,
+        "%timefield%": "current_dt_str",
+        "index": "capacity_dashboard",
+        "body": {
+          "size": 0,
+          "aggs": {
+            "Manager_2": {
+              "terms": {"field": "n2_manager_name.keyword"},
+              "aggs": {"count": {"value_count": {"field": "n1_manager_name.keyword"}}}
+            }
+          }
+        }
+      },
+      "format": {"property": "aggregations.Manager_2.buckets"}
+    },
+    {
+      "name": "esdata_n1",
+      "url": {
+        "%context%": true,
+        "%timefield%": "current_dt_str",
+        "index": "capacity_dashboard",
+        "body": {
+          "size": 0,
+          "aggs": {
+            "Manager_1": {
+              "terms": {"field": "n1_manager_name.keyword"},
+              "aggs": {"count": {"value_count": {"field": "n1_manager_name.keyword"}}}
+            }
+          }
+        }
+      },
+      "format": {"property": "aggregations.Manager_1.buckets"}
+    },
+    {
+      "name": "esdata_d6",
+      "url": {
+        "%context%": true,
+        "%timefield%": "current_dt_str",
+        "index": "capacity_dashboard",
+        "body": {
+          "size": 0,
+          "aggs": {
+    "Manager_6": {
+      "terms": {
+        "field": "n6_manager_name.keyword"
+      },
+      "aggs": {
+        "count": {
+          "cardinality": {
+            "field": "n5_manager_name.keyword"
+          }
+        }
+      }
+    }
+  }
+        }
+      },
+      "format": {"property": "aggregations.Manager_6.buckets"}
+    },
+       {
+      "name": "esdata_d5",
+      "url": {
+        "%context%": true,
+        "%timefield%": "current_dt_str",
+        "index": "capacity_dashboard",
+        "body": {
+          "size": 0,
+          "aggs": {
+    "Manager_4": {
+      "terms": {
+        "field": "n5_manager_name.keyword"
+      },
+      "aggs": {
+        "count": {
+          "cardinality": {
+            "field": "n4_manager_name.keyword"
+          }
+        }
+      }
+    }
+  }
+        }
+      },
+      "format": {"property": "aggregations.Manager_4.buckets"}
+    },
+    {
+      "name": "esdata_d4",
+      "url": {
+        "%context%": true,
+        "%timefield%": "current_dt_str",
+        "index": "capacity_dashboard",
+        "body": {
+          "size": 0,
+          "aggs": {
+    "Manager_4": {
+      "terms": {
+        "field": "n4_manager_name.keyword"
+      },
+      "aggs": {
+        "count": {
+          "cardinality": {
+            "field": "n3_manager_name.keyword"
+          }
+        }
+      }
+    }
+  }
+        }
+      },
+      "format": {"property": "aggregations.Manager_4.buckets"}
+    },
+    {
+      "name": "esdata_d3",
+      "url": {
+        "%context%": true,
+        "%timefield%": "current_dt_str",
+        "index": "capacity_dashboard",
+        "body": {
+          "size": 0,
+          "aggs": {
+    "Manager_3": {
+      "terms": {
+        "field": "n3_manager_name.keyword"
+      },
+      "aggs": {
+        "count": {
+          "cardinality": {
+            "field": "n2_manager_name.keyword"
+          }
+        }
+      }
+    }
+  }
+        }
+      },
+      "format": {"property": "aggregations.Manager_3.buckets"}
+    },
+    {
+      "name": "esdata_d2",
+      "url": {
+        "%context%": true,
+        "%timefield%": "current_dt_str",
+        "index": "capacity_dashboard",
+        "body": {
+          "size": 0,
+          "aggs": {
+    "Manager_2": {
+      "terms": {
+        "field": "n2_manager_name.keyword"
+      },
+      "aggs": {
+        "count": {
+          "cardinality": {
+            "field": "n1_manager_name.keyword"
+          }
+        }
+      }
+    }
+  }
+        }
+      },
+      "format": {"property": "aggregations.Manager_2.buckets"}
+    },
+    {
+      "name": "esdata_d1",
+      "url": {
+        "%context%": true,
+        "%timefield%": "current_dt_str",
+        "index": "capacity_dashboard",
+        "body": {
+          "size": 0,
+          "aggs": {
+    "Manager_1": {
+      "terms": {
+        "field": "n1_manager_name.keyword"
+      },
+      "aggs": {
+        "count": {
+          "cardinality": {
+            "field": "_id"
+          }
+        }
+      }
+    }
+  }
+        }
+      },
+      "format": {"property": "aggregations.Manager_1.buckets"}
+    },
+    {
+      "name": "esdata_n",
+      "source": ["esdata_n6", "esdata_n5", "esdata_n4", "esdata_n3", "esdata_n2"],
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["key"],
+          "ops": ["sum"],
+          "fields": ["doc_count"],
+          "as": ["in_count"]
+        },
+        {"type": "formula", "as": "position", "expr": "0"}
+      ]
+    },
+    {
+      "name": "esdata_d",
+      "source": ["esdata_d6", "esdata_d5", "esdata_d4", "esdata_d3", "esdata_d2","esdata_d1"],
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["key"],
+          "ops": ["max"],
+          "fields": ["count.value"],
+          "as": ["in_count"]
+        },
+        {"type": "formula", "as": "position", "expr": "1"}
+      ]
+    },
+    {
+      "name": "esdata",
+      "source": ["esdata_n", "esdata_d"],
+      "transform": [
+        { 
+        "type": "window",
+        "sort": {"field": "key", "order": "ascending"},
+        "ops": ["rank", "dense_rank"],
+        "fields": [null, null],
+        "as": ["rank", "drank"]
+      },
+      {"type": "collect", "sort": {"field": "drank"}},
+      {"type": "filter", "expr": "datum.key != 'Tony Wood'" },
+      {"type": "filter", "expr": "datum.key != 'Shobie Ramakrishnan'"}
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "yscale",
+      "type": "band",
+      "domain": {"data": "esdata", "field": "key"},
+      "range": "height",
+      "padding": 0.2
+    },
+    {
+      "name": "xscale",
+      "type": "linear",
+      "domain": {"data": "esdata", "field": "in_count"},
+      "range": "width",
+      "round": true,
+      "zero": true,
+      "nice": true
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {"data": "esdata", "field": "position"},
+      "range": {"scheme": "set2"}
+    },
+    {
+      "name": "legendscale",
+      "type": "ordinal",
+      "domain": ["Direct", "In-Direct"],
+      "range": {"scheme": "set2"}
+    }
+  ],
+  "axes": [
+    {
+      "orient": "left",
+      "scale": "yscale",
+      "tickSize": 0,
+      "labelPadding": 4,
+      "zindex": 1,
+      "title": "Manager Name"
+    },
+    {"orient": "bottom", "scale": "xscale", "title": "Employee Count"}
+  ],
+  "marks": [
+    {
+      "type": "group",
+      "from": {"facet": {"data": "esdata", "name": "facet", "groupby": "key"}},
+      "encode": {"enter": {"y": {"scale": "yscale", "field": "key"}}},
+      "signals": [{"name": "height", "update": "bandwidth('yscale')"}],
+      "scales": [
+        {
+          "name": "pos",
+          "type": "band",
+          "range": "height",
+          "domain": {"data": "facet", "field": "position"}
+        }
+      ],
+      "marks": [
+        {
+          "name": "bars",
+          "from": {"data": "facet"},
+          "type": "rect",
+          "encode": {
+            "enter": {
+              "y": {"scale": "pos", "field": "position"},
+              "height": {"scale": "pos", "band": 1},
+              "x": {
+                "scale": "xscale",
+                "field": "in_count"
+              },
+              "x2": {"scale": "xscale", "value": 1},
+              "fill": [
+                {"test": "datum.position == 0", "value": "#fc8d62"},
+                {"test": "datum.position == 1", "value": "#66c2a5"}
+              ],
+              "tooltip": {
+                "signal": "{'Metric': datum.position == 0 ? 'In-Direct' : 'Direct' , 'Value': datum.in_count}"
+              }
+            }
+          }
+        },
+        {
+          "type": "text",
+          "from": {"data": "bars"},
+          "encode": {
+            "enter": {
+              "x": {
+                "field": "x2",
+                "offset": {"signal": "datum.x2 < 9 ? 10 : 20"}
+              },
+              "y": {"field": "y", "offset": {"field": "height", "mult": 0.5}},
+              "fill": [
+                {
+                  "test": "contrast('white', datum.fill) > contrast('black', datum.fill)",
+                  "value": "white"
+                },
+                {"value": "black"}
+              ],
+              "align": {"value": "right"},
+              "baseline": {"value": "middle"},
+              "text": {"field": "datum.in_count"}
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "fill": "legendscale",
+      "encode": {
+        "title": {"update": {"fontSize": {"value": 14}}},
+        "labels": {
+          "interactive": true,
+          "update": {"fontSize": {"value": 12}, "fill": {"value": "black"}},
+          "hover": {"fill": {"value": "firebrick"}}
+        },
+        "symbols": {"update": {"stroke": {"value": "transparent"}}},
+        "legend": {
+          "update": {"stroke": {"value": "#ccc"}, "strokeWidth": {"value": 1.5}}
+        }
+      }
+    }
+  ]
+}

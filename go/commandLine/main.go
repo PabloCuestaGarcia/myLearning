@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"learning/methods"
 	"os"
@@ -9,10 +10,15 @@ import (
 func main() {
 	var args []string = os.Args
 
-	if len(args) < 2 {
-		fmt.Printf("Usage: ./main <argument>\n")
-		os.Exit(1)
-	}
+	var (
+		requestHTTP string
+		password    string
+	)
+
+	flag.StringVar(&requestHTTP, "request", "", "Url to access")
+	flag.StringVar(&password, "password", "", "Use a password to access")
+
+	flag.Parse()
 
 	handlerArgs(args)
 }

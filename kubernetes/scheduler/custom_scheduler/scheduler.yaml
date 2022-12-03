@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-scheduler
+  namespace: kube-system
+  labels:
+    name: my-scheduler
+spec:
+  serviceAccountName: my-scheduler
+  volumes:
+    - name: config-volume
+      configMap:
+        name: my-scheduler-config
+  containers:
+  - name: my-scheduler
+    image: k8s.gcr.io/kube-scheduler:v1.24.0
+    command:
+      - /usr/local/bin/kube-scheduler
+      - --config=/etc/kubernetes/my-scheduler/my-scheduler-config.yaml
+    livenessProbe:
+      httpGet:
+        path: /healthz
+        port: 10259
+        scheme: HTTPS
+      initialDelaySeconds: 15
+    readinessProbe:
+      httpGet:
+        path: /healthz
+        port: 10259
+        scheme: HTTPS
+    securityContext:
+      privileged: false
+    resources:
+      limits:
+        memory: "256Mi"
+        cpu: "1"
+    volumeMounts:
+      - name: config-volume
+        mountPath: /etc/kubernetes/my-scheduler
+

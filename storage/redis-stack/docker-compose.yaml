@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  redis-0:
+    image: redis/redis-stack:6.2.6-rc1
+    container_name: redis-0
+    command: redis-server /etc/redis/redis-master.conf
+    ports:
+      - 6379:6379
+    volumes:
+      - ./config/replication:/etc/redis/
+    networks:
+      - redis
+
+  redis-1:
+    image: redis/redis-stack:6.2.6-rc1
+    container_name: redis-1
+    command: redis-server /etc/redis/redis-worker.conf
+    volumes:
+      - ./config/replication:/etc/redis/
+    networks:
+      - redis    
+
+  redis-2:
+    image: redis/redis-stack:6.2.6-rc1
+    container_name: redis-2
+    command: redis-server /etc/redis/redis-worker.conf
+    volumes:
+      - ./config/replication:/etc/redis/
+    networks:
+      - redis  
+
+
+networks:
+  redis:

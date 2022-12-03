@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: example
+spec:
+  selector:
+    matchLabels:
+      app: daemon-example
+  template:
+    metadata:
+      app: daemon-example
+    spec:
+      containers:
+        - name: app
+          image: k8s.gcr.io/fluentd-elasticsearch:1.20
+      
